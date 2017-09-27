@@ -1,0 +1,124 @@
+[
+  {
+    "title": "Dashboard",
+    "icon": "glyphicon glyphicon-stats icon text-primary-dker",
+    "path": "/#/admin/home"
+  },
+  {
+    "title": "UI Elements",
+    "icon": "fa fa-toggle-on icon text-info-dker",
+    "children": [
+      {
+        "title": "Buttons",
+        "path": "/#/ui/ui-buttons"
+      },
+      {
+        "title": "General",
+        "path": "/#/ui/ui-general"
+      },
+      {
+        "title": "Tabs & Accordions",
+        "path": "/#/ui/ui-tabs-accordion"
+      },
+      {
+        "title": "Progress Bars",
+        "path": "/#/ui/ui-progressbars"
+      },
+      {
+        "title": "Pagination",
+        "path": "/#/ui/ui-pagination"
+      },
+      {
+        "title": "Sliders",
+        "path": "/#/ui/ui-sliders"
+      },
+      {
+        "title": "Portlets",
+        "path": "/#/ui/ui-portlets"
+      },
+      {
+        "title": "Notifications",
+        "path": "/#/ui/ui-notifications"
+      },
+      {
+        "title": "Alerts",
+        "path": "/#/ui/ui-alert"
+      },
+      {
+        "title": "icons",
+        "icon": "toggle-accordion",
+        "children": [
+          {
+            "title": "Fontawesome",
+            "path": "/#/ui/ui-fontawesome"
+          },
+          {
+            "title": "Feather",
+            "path": "/#/ui/ui-feather"
+          },
+          {
+            "title": "Climacon",
+            "path": "/#/ui/ui-climacon"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Forms",
+    "icon": "glyphicon glyphicon-edit icon text-success",
+    "children": [
+      {
+        "title": "Basic Forms Demo",
+        "path": "/#/form/basic"
+      },
+      {
+        "title": "Advanced Components",
+        "path": "/#/form/form-advanced"
+      },
+      {
+        "title": "Wizard",
+        "path": "/#/form/form-wizard"
+      },
+      {
+        "title": "Editors",
+        "path": "/#/form/form-editors"
+      },
+      {
+        "title": "Validation",
+        "path": "/#/form/form-validation"
+      },
+      {
+        "title": "Input Masks",
+        "path": "/#/form/form-masks"
+      }
+    ]
+  },
+  {
+    "title": "Tables",
+    "icon": "glyphicon glyphicon-list",
+    "children": [
+      {
+        "title": "Basic Tables",
+        "path": "/#/table/basic"
+      },
+      {
+        "title": "Responsive Tables",
+        "path": "/#/table/responsive"
+      },
+      {
+        "title": "Data Tables",
+        "path": "/#/table/table-datatable"
+      },
+      {
+        "title": "Editable editable",
+        "path": "/#/admin/table-datatable"
+      }
+    ]
+  },
+  {
+    "title": "Documentation",
+    "icon": "icon-question icon",
+    "path": "/#/admin/docs"
+  }
+]

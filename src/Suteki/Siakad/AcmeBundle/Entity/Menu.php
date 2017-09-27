@@ -3,6 +3,7 @@
 namespace Suteki\Siakad\AcmeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Menu
@@ -45,7 +46,8 @@ class Menu
     /**
      * @var int
      *
-     * @ORM\Column(name="parent", type="integer")
+     * @ORM\ManyToOne(targetEntity="Menu", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      */
     private $parent;
 
@@ -70,6 +72,10 @@ class Menu
      */
     private $children;
 
+    function __construct()
+    {
+  	    $this->children = new ArrayCollection();
+  	}
 
     /**
      * Get id
