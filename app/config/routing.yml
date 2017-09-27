@@ -1,7 +1,7 @@
-acme:
-    resource: "@AcmeBundle/Controller/"
-    type:     annotation
-    prefix:   /
+# acme:
+#     resource: "@AcmeBundle/Controller/"
+#     type:     annotation
+#     prefix:   /
 
 api:
     resource: '.'
