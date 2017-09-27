@@ -98,6 +98,7 @@ class ComposerStaticInitf3039b9f0aab75584f0c363753da9e9a
         'F' => 
         array (
             'Fig\\Link\\' => 9,
+            'Faker\\' => 6,
         ),
         'D' => 
         array (
@@ -294,6 +295,10 @@ class ComposerStaticInitf3039b9f0aab75584f0c363753da9e9a
         'Fig\\Link\\' => 
         array (
             0 => __DIR__ . '/..' . '/fig/link-util/src',
+        ),
+        'Faker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
