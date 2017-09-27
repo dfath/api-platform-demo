@@ -2,11 +2,13 @@
 
 namespace Suteki\Siakad\AcmeBundle\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Book
  *
+ * @ApiResource
  * @ORM\Table(name="book")
  * @ORM\Entity(repositoryClass="Suteki\Siakad\AcmeBundle\Repository\BookRepository")
  */
@@ -187,4 +189,3 @@ class Book
         return $this->publicationDate;
     }
 }
-

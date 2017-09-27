@@ -19,6 +19,7 @@
       <parameter key="ApiPlatformBundle">ApiPlatform\Core\Bridge\Symfony\Bundle\ApiPlatformBundle</parameter>
       <parameter key="NelmioCorsBundle">Nelmio\CorsBundle\NelmioCorsBundle</parameter>
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
+      <parameter key="AcmeBundle">Suteki\Siakad\AcmeBundle\AcmeBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -76,6 +77,11 @@
         <parameter key="path">/Users/fathrico/Sites/next/demo/api-platform-demo/src/AppBundle</parameter>
         <parameter key="namespace">AppBundle</parameter>
       </parameter>
+      <parameter key="AcmeBundle" type="collection">
+        <parameter key="parent">null</parameter>
+        <parameter key="path">/Users/fathrico/Sites/next/demo/api-platform-demo/src/Suteki/Siakad/AcmeBundle</parameter>
+        <parameter key="namespace">Suteki\Siakad\AcmeBundle</parameter>
+      </parameter>
       <parameter key="DebugBundle" type="collection">
         <parameter key="parent">null</parameter>
         <parameter key="path">/Users/fathrico/Sites/next/demo/api-platform-demo/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle</parameter>
@@ -108,7 +114,7 @@
     <parameter key="database_port">3306</parameter>
     <parameter key="database_name">api_platform_demo</parameter>
     <parameter key="database_user">root</parameter>
-    <parameter key="database_password">api_platform</parameter>
+    <parameter key="database_password">null</parameter>
     <parameter key="mailer_transport">smtp</parameter>
     <parameter key="mailer_host">127.0.0.1</parameter>
     <parameter key="mailer_user">null</parameter>
@@ -390,15 +396,15 @@
     <parameter key="api_platform.collection.pagination.enabled_parameter_name">pagination</parameter>
     <parameter key="api_platform.collection.pagination.items_per_page_parameter_name">itemsPerPage</parameter>
     <parameter key="api_platform.http_cache.etag">true</parameter>
-    <parameter key="api_platform.http_cache.max_age">0</parameter>
-    <parameter key="api_platform.http_cache.shared_max_age">3600</parameter>
+    <parameter key="api_platform.http_cache.max_age">null</parameter>
+    <parameter key="api_platform.http_cache.shared_max_age">null</parameter>
     <parameter key="api_platform.http_cache.vary" type="collection">
-      <parameter>Content-Type</parameter>
-      <parameter>Authorization</parameter>
+      <parameter>Accept</parameter>
     </parameter>
-    <parameter key="api_platform.http_cache.public">true</parameter>
+    <parameter key="api_platform.http_cache.public">null</parameter>
     <parameter key="api_platform.resource_class_directories" type="collection">
       <parameter>/Users/fathrico/Sites/next/demo/api-platform-demo/src/AppBundle/Entity</parameter>
+      <parameter>/Users/fathrico/Sites/next/demo/api-platform-demo/src/Suteki/Siakad/AcmeBundle/Entity</parameter>
     </parameter>
     <parameter key="api_platform.oauth.enabled">false</parameter>
     <parameter key="api_platform.oauth.clientid"></parameter>
@@ -704,7 +710,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>ohTCAbdwRhb6sBL9e9ZH-m</argument>
+      <argument>eEPBnELhdcPFvrNq7GZ9FM</argument>
       <argument>/Users/fathrico/Sites/next/demo/api-platform-demo/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -714,7 +720,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>ohTCAbdwRhb6sBL9e9ZH-m</argument>
+      <argument>eEPBnELhdcPFvrNq7GZ9FM</argument>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       </call>
@@ -1229,14 +1235,6 @@
           <argument>onKernelResponse</argument>
         </argument>
         <argument>-1</argument>
-      </call>
-      <call method="addListener">
-        <argument>kernel.response</argument>
-        <argument type="collection">
-          <argument type="service" id="api_platform.http_cache.listener.response.add_tags"/>
-          <argument>onKernelResponse</argument>
-        </argument>
-        <argument>-2</argument>
       </call>
       <call method="addListener">
         <argument>kernel.request</argument>
@@ -2296,12 +2294,12 @@
     </service>
     <service id="security.authentication.listener.anonymous.main" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
       <argument type="service" id="security.token_storage"/>
-      <argument>59cb0a5de5a793.09491710</argument>
+      <argument>59cb2756d89ff8.25354311</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument type="service" id="security.authentication.manager"/>
     </service>
     <service id="security.authentication.provider.anonymous.main" class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-      <argument>59cb0a5de5a793.09491710</argument>
+      <argument>59cb2756d89ff8.25354311</argument>
     </service>
     <service id="security.exception_listener.main" class="Symfony\Component\Security\Http\Firewall\ExceptionListener" public="false">
       <argument type="service" id="security.token_storage"/>
@@ -2480,6 +2478,10 @@
         <argument>ApiPlatform</argument>
       </call>
       <call method="addPath">
+        <argument>/Users/fathrico/Sites/next/demo/api-platform-demo/src/Suteki/Siakad/AcmeBundle/Resources/views</argument>
+        <argument>Acme</argument>
+      </call>
+      <call method="addPath">
         <argument>/Users/fathrico/Sites/next/demo/api-platform-demo/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
@@ -2617,6 +2619,10 @@
       <call method="addPath">
         <argument>/Users/fathrico/Sites/next/demo/api-platform-demo/vendor/api-platform/core/src/Bridge/Symfony/Bundle/Resources/views</argument>
         <argument>ApiPlatform</argument>
+      </call>
+      <call method="addPath">
+        <argument>/Users/fathrico/Sites/next/demo/api-platform-demo/src/Suteki/Siakad/AcmeBundle/Resources/views</argument>
+        <argument>Acme</argument>
       </call>
       <call method="addPath">
         <argument>/Users/fathrico/Sites/next/demo/api-platform-demo/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
@@ -2880,14 +2886,6 @@
       <argument type="service" id="service_container"/>
       <call method="addEventListener">
         <argument type="collection">
-          <argument>preUpdate</argument>
-          <argument>onFlush</argument>
-          <argument>postFlush</argument>
-        </argument>
-        <argument type="service" id="api_platform.doctrine.listener.http_cache.purge"/>
-      </call>
-      <call method="addEventListener">
-        <argument type="collection">
           <argument>loadClassMetadata</argument>
         </argument>
         <argument type="service" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
@@ -2900,7 +2898,7 @@
         <argument key="port">3306</argument>
         <argument key="dbname">api_platform_demo</argument>
         <argument key="user">root</argument>
-        <argument key="password">api_platform</argument>
+        <argument key="password">null</argument>
         <argument key="charset">UTF8</argument>
         <argument key="driverOptions" type="collection"/>
         <argument key="serverVersion">5.7</argument>
@@ -2951,6 +2949,7 @@
       <call method="setEntityNamespaces">
         <argument type="collection">
           <argument key="AppBundle">AppBundle\Entity</argument>
+          <argument key="AcmeBundle">Suteki\Siakad\AcmeBundle\Entity</argument>
         </argument>
       </call>
       <call method="setMetadataCacheImpl">
@@ -2994,12 +2993,17 @@
       <argument type="service" id="annotations.cached_reader"/>
       <argument type="collection">
         <argument>/Users/fathrico/Sites/next/demo/api-platform-demo/src/AppBundle/Entity</argument>
+        <argument>/Users/fathrico/Sites/next/demo/api-platform-demo/src/Suteki/Siakad/AcmeBundle/Entity</argument>
       </argument>
     </service>
     <service id="doctrine.orm.default_metadata_driver" class="Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain" public="false">
       <call method="addDriver">
         <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
         <argument>AppBundle\Entity</argument>
+      </call>
+      <call method="addDriver">
+        <argument type="service" id="doctrine.orm.default_annotation_metadata_driver"/>
+        <argument>Suteki\Siakad\AcmeBundle\Entity</argument>
       </call>
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_metadata_cache" class="Doctrine\Common\Cache\ArrayCache">
@@ -3135,6 +3139,7 @@
       </argument>
       <argument type="collection">
         <argument>/Users/fathrico/Sites/next/demo/api-platform-demo/src/AppBundle/Entity</argument>
+        <argument>/Users/fathrico/Sites/next/demo/api-platform-demo/src/Suteki/Siakad/AcmeBundle/Entity</argument>
       </argument>
       <argument type="service" id="api_platform.subresource_operation_factory.cached"/>
     </service>
@@ -3416,6 +3421,7 @@
       <argument type="service" id="annotations.cached_reader"/>
       <argument type="collection">
         <argument>/Users/fathrico/Sites/next/demo/api-platform-demo/src/AppBundle/Entity</argument>
+        <argument>/Users/fathrico/Sites/next/demo/api-platform-demo/src/Suteki/Siakad/AcmeBundle/Entity</argument>
       </argument>
       <argument type="service" id="api_platform.metadata.resource.name_collection_factory.xml"/>
     </service>
@@ -3770,36 +3776,12 @@
     <service id="api_platform.http_cache.listener.response.configure" class="ApiPlatform\Core\HttpCache\EventListener\AddHeadersListener">
       <tag name="kernel.event_listener" event="kernel.response" method="onKernelResponse" priority="-1"/>
       <argument>true</argument>
-      <argument>0</argument>
-      <argument>3600</argument>
+      <argument>null</argument>
+      <argument>null</argument>
       <argument type="collection">
-        <argument>Content-Type</argument>
-        <argument>Authorization</argument>
+        <argument>Accept</argument>
       </argument>
-      <argument>true</argument>
-    </service>
-    <service id="api_platform.doctrine.listener.http_cache.purge" class="ApiPlatform\Core\Bridge\Doctrine\EventListener\PurgeHttpCacheListener">
-      <tag name="doctrine.event_listener" event="preUpdate"/>
-      <tag name="doctrine.event_listener" event="onFlush"/>
-      <tag name="doctrine.event_listener" event="postFlush"/>
-      <argument type="service" id="api_platform.http_cache.purger.varnish"/>
-      <argument type="service" id="api_platform.iri_converter"/>
-      <argument type="service" id="api_platform.resource_class_resolver"/>
-    </service>
-    <service id="api_platform.http_cache.purger.varnish_client" class="GuzzleHttp\Client" public="false" abstract="true"/>
-    <service id="api_platform.http_cache.purger.varnish" class="ApiPlatform\Core\HttpCache\VarnishPurger" public="false">
-      <argument type="collection">
-        <argument type="service" id="api_platform.http_cache.purger.varnish_client.http://varnish"/>
-      </argument>
-    </service>
-    <service id="api_platform.http_cache.listener.response.add_tags" class="ApiPlatform\Core\HttpCache\EventListener\AddTagsListener">
-      <tag name="kernel.event_listener" event="kernel.response" method="onKernelResponse" priority="-2"/>
-      <argument type="service" id="api_platform.iri_converter"/>
-    </service>
-    <service id="api_platform.http_cache.purger.varnish_client.http://varnish" class="GuzzleHttp\Client" public="false">
-      <argument type="collection">
-        <argument key="base_uri">http://varnish</argument>
-      </argument>
+      <argument>null</argument>
     </service>
     <service id="nelmio_cors.cors_listener" class="Nelmio\CorsBundle\EventListener\CorsListener">
       <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" priority="250"/>
@@ -4242,7 +4224,7 @@
     <service id="cache.system.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>k8h48oyq6F</argument>
       <argument>0</argument>
-      <argument>ohTCAbdwRhb6sBL9e9ZH-m</argument>
+      <argument>eEPBnELhdcPFvrNq7GZ9FM</argument>
       <argument>/Users/fathrico/Sites/next/demo/api-platform-demo/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -4250,7 +4232,7 @@
     <service id="cache.validator.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>z65SVXkc2s</argument>
       <argument>0</argument>
-      <argument>ohTCAbdwRhb6sBL9e9ZH-m</argument>
+      <argument>eEPBnELhdcPFvrNq7GZ9FM</argument>
       <argument>/Users/fathrico/Sites/next/demo/api-platform-demo/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -4258,7 +4240,7 @@
     <service id="cache.serializer.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>zyp+xZ3idD</argument>
       <argument>0</argument>
-      <argument>ohTCAbdwRhb6sBL9e9ZH-m</argument>
+      <argument>eEPBnELhdcPFvrNq7GZ9FM</argument>
       <argument>/Users/fathrico/Sites/next/demo/api-platform-demo/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -4266,7 +4248,7 @@
     <service id="cache.annotations.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>If3LTJN2M4</argument>
       <argument>0</argument>
-      <argument>ohTCAbdwRhb6sBL9e9ZH-m</argument>
+      <argument>eEPBnELhdcPFvrNq7GZ9FM</argument>
       <argument>/Users/fathrico/Sites/next/demo/api-platform-demo/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -4274,7 +4256,7 @@
     <service id="api_platform.cache.identifiers_extractor.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>XLNBFY7SOH</argument>
       <argument>0</argument>
-      <argument>ohTCAbdwRhb6sBL9e9ZH-m</argument>
+      <argument>eEPBnELhdcPFvrNq7GZ9FM</argument>
       <argument>/Users/fathrico/Sites/next/demo/api-platform-demo/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -4282,7 +4264,7 @@
     <service id="api_platform.cache.subresource_operation_factory.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>shWWz69Vop</argument>
       <argument>0</argument>
-      <argument>ohTCAbdwRhb6sBL9e9ZH-m</argument>
+      <argument>eEPBnELhdcPFvrNq7GZ9FM</argument>
       <argument>/Users/fathrico/Sites/next/demo/api-platform-demo/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -4392,7 +4374,6 @@
     <service id="api_platform.metadata.resource.name_collection_factory" alias="api_platform.metadata.resource.name_collection_factory.cached"/>
     <service id="api_platform.metadata.resource.metadata_factory" alias="api_platform.metadata.resource.metadata_factory.cached"/>
     <service id="api_platform.metadata.property.metadata_factory" alias="api_platform.metadata.property.metadata_factory.cached"/>
-    <service id="api_platform.http_cache.purger" alias="api_platform.http_cache.purger.varnish"/>
     <service id="Symfony\Component\Templating\EngineInterface" alias="templating.engine.twig" public="false"/>
     <service id="Symfony\Bundle\FrameworkBundle\Templating\EngineInterface" alias="templating.engine.twig" public="false"/>
     <service id="console.command.symfony_bundle_securitybundle_command_userpasswordencodercommand" alias="security.console.user_password_encoder_command"/>
